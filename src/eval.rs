@@ -140,7 +140,7 @@ pub fn create_ecx<'mir, 'tcx: 'mir>(
 
     // Setup first stack-frame
     let main_instance = ty::Instance::mono(tcx, main_id);
-    let main_mir = ecx.load_mir(main_instance.def, None)?;
+    let main_mir = ecx.load_mir(main_instance, None)?;
     if main_mir.arg_count != 0 {
         bug!("main function must not take any arguments");
     }

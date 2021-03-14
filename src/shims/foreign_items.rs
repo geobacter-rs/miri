@@ -233,7 +233,7 @@ pub trait EvalContextExt<'mir, 'tcx: 'mir>: crate::MiriEvalContextExt<'mir, 'tcx
                     this.check_abi_and_shim_symbol_clash(abi, Abi::Rust, link_name)?;
                     let panic_impl_id = tcx.lang_items().panic_impl().unwrap();
                     let panic_impl_instance = ty::Instance::mono(tcx, panic_impl_id);
-                    return Ok(Some(&*this.load_mir(panic_impl_instance.def, None)?));
+                    return Ok(Some(&*this.load_mir(panic_impl_instance, None)?));
                 }
                 #[rustfmt::skip]
                 | "exit"
